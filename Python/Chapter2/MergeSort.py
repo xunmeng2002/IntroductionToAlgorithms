@@ -7,7 +7,7 @@ def MergeSort(A, start, end):
         mid = int((start + end)/2)
         MergeSort(A, start, mid)
         MergeSort(A, mid, end)
-        Merge(A, start, mid, end)
+        Merge2(A, start, mid, end)
 
 def Merge(A, start, mid, end):
     l = A[start: mid]
@@ -18,6 +18,25 @@ def Merge(A, start, mid, end):
     k = 0
     for i in range(start, end):
         if l[j] <= r[k]:
+            A[i] = l[j]
+            j += 1
+        else:
+            A[i] = r[k]
+            k += 1
+
+def Merge2(A, start, mid, end):
+    l = A[start: mid]
+    r = A[mid: end]
+    j = 0
+    k = 0
+    for i in range(start, end):
+        if j == len(l):
+            A[i] = r[k]
+            k += 1
+        elif k == len(r):
+            A[i] = l[j]
+            j += 1
+        elif l[j] <= r[k]:
             A[i] = l[j]
             j += 1
         else:
