@@ -66,6 +66,19 @@ public:
 		MaxHeapify(Array, HeapSize, 0);
 		return max;
 	}
+	void HeapIncreaseKey(int index, int key)
+	{
+		if (key < Array[index])
+		{
+			throw exception("new key is smaller than current key");
+		}
+		Array[index] = key;
+		while (index > 0 && Array[Parent(index)] < Array[index])
+		{
+			Exchange(Array, Parent(index), index);
+			index = Parent(index);
+		}
+	}
 	void MaxHeapInsert(T key)
 	{
 		if (HeapSize == Length)
@@ -91,19 +104,7 @@ private:
 		Array = A;
 		Length *= 2;
 	}
-	void HeapIncreaseKey(int index, int key)
-	{
-		if (key < Array[index])
-		{
-			throw exception("new key is smaller than current key");
-		}
-		Array[index] = key;
-		while (index > 0 && Array[Parent(index)] < Array[index])
-		{
-			Exchange(Array, Parent(index), index);
-			index = Parent(index);
-		}
-	}
+	
 private:
 	T* Array;
 	int HeapSize;

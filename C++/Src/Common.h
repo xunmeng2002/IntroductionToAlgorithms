@@ -37,3 +37,11 @@ void Print(T** a, int row, int col)
 	}
 	cout << endl;
 }
+
+template<typename T>
+void Exchange(T* A, int index1, int index2)
+{
+	T temp = A[index1];
+	A[index1] = A[index2];
+	A[index2] = temp;
+}

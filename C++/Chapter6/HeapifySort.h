@@ -1,16 +1,9 @@
 #pragma once
+#include "Common.h"
 
 int Parent(int i);
 int Left(int i);
 int Right(int i);
-
-template<typename T>
-void Exchange(T* A, int index1, int index2)
-{
-	T temp = A[index1];
-	A[index1] = A[index2];
-	A[index2] = temp;
-}
 
 template<typename T>
 void MaxHeapify(T* A, int len, int index)
