@@ -23,7 +23,7 @@ public:
 		for (int i = 0; i < Row; i++)
 		{
 			Item[i] = new T[Column];
-			::memcpy(Item[i], other.Item[i], sizeof(Item[i]));
+			::memcpy(Item[i], other.Item[i], sizeof(T) * Column);
 		}
 	}
 	Matrix<T>& operator=(const Matrix<T>& other)
@@ -34,8 +34,9 @@ public:
 		for (int i = 0; i < Row; i++)
 		{
 			Item[i] = new T[Column];
-			::memcpy(Item[i], other.Item[i], sizeof(Item[i]));
+			::memcpy(Item[i], other.Item[i], sizeof(T) * Column);
 		}
+		return *this;
 	}
 	Matrix(Matrix<T>&& other)
 	{

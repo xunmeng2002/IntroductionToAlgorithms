@@ -18,8 +18,8 @@ void Merge(int* a, int start, int mid, int end)
 {
 	int len1 = mid - start;
 	int len2 = end - mid;
-	int* l = new int[len1 + 1];
-	int* r = new int[len2 + 1];
+	int* l = new int[len1 + 1LL];
+	int* r = new int[len2 + 1LL];
 	int* p = a + start;
 	int* p1 = l, * p2 = r;
 	for (int i = 0; i < len1; i++)

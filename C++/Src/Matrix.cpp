@@ -37,4 +37,9 @@ void TestMatrix()
 	p[1] = new int[3]{ 4, 5,6 };
 	m8.SetValue(p);
 	m8.Print("m8");
+
+	Matrix<int> m9(m8), m10;
+	m10 = m8;
+	m9.Print("m9");
+	m10.Print("m10");
 }
