@@ -6,6 +6,7 @@
 #include "Matrix.h"
 #include "HeapifySort.h"
 #include "PriorityQueue.h"
+#include "QuickSort.h"
 
 
 using namespace std;
@@ -17,10 +18,12 @@ int main()
     //TestFindMaximumSubArray();
     //TestMatrix();
     //TestSquareMatrixMultiply();
+
     //TestBuildMaxHeap();
     //TestBuildMinHeap();
     //TestHeapSort();
+    //TestPriorityQueue();
 
-    TestPriorityQueue();
+    TestQuickSort();
 }
 
