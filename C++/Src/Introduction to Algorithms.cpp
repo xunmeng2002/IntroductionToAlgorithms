@@ -4,6 +4,8 @@
 #include "FindMaximumSubArray.h"
 #include "MatrixMultiply.h"
 #include "Matrix.h"
+#include "HeapifySort.h"
+#include "PriorityQueue.h"
 
 
 using namespace std;
@@ -13,7 +15,12 @@ int main()
     //TestInsertionSort();
     //TestMergeSort();
     //TestFindMaximumSubArray();
-    TestMatrix();
+    //TestMatrix();
     //TestSquareMatrixMultiply();
+    //TestBuildMaxHeap();
+    //TestBuildMinHeap();
+    //TestHeapSort();
+
+    TestPriorityQueue();
 }
 

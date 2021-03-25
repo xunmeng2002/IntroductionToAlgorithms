@@ -26,6 +26,7 @@ endmacro(add_package)
 add_package(Src ./Src)
 add_package(Chapter2 ./Chapter2)
 add_package(Chapter4 ./Chapter4)
+add_package(Chapter6 ./Chapter6)
 
 add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 
