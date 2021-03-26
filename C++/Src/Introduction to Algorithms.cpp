@@ -7,6 +7,7 @@
 #include "HeapifySort.h"
 #include "PriorityQueue.h"
 #include "QuickSort.h"
+#include "CountingSort.h"
 
 
 using namespace std;
@@ -24,6 +25,7 @@ int main()
     //TestHeapSort();
     //TestPriorityQueue();
 
-    TestQuickSort();
+    //TestQuickSort();
+    TestCountingSort();
 }
 
