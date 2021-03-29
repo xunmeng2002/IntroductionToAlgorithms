@@ -45,3 +45,6 @@ void Exchange(T* A, int index1, int index2)
 	A[index1] = A[index2];
 	A[index2] = temp;
 }
+
+int Random(int x);
+int Random(int start, int end);

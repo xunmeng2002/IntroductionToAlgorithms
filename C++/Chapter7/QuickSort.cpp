@@ -29,7 +29,32 @@ int Partition(int* A, int start, int end)
 	return i;
 }
 
+void RandomizedQuickSort(int* A, int start, int end)
+{
+	if (end - start > 1)
+	{
+		int mid = RandomizedPartition(A, start, end);
+		RandomizedQuickSort(A, start, mid);
+		RandomizedQuickSort(A, mid + 1, end);
+	}
+}
+
+int RandomizedPartition(int* A, int start, int end)
+{
+	int i = Random(start, end);
+	Exchange(A, i, end);
+	return Partition(A, start, end);
+}
+
 void TestQuickSort()
+{
+	int a[] = { 2, 8, 7, 1, 3, 5, 6, 4 };
+	int len = sizeof(a) / sizeof(int);
+	QuickSort(a, 0, len);
+	Print(a, len);
+}
+
+void TestRandomizedQuickSort()
 {
 	int a[] = { 2, 8, 7, 1, 3, 5, 6, 4 };
 	int len = sizeof(a) / sizeof(int);

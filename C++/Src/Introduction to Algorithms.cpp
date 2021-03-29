@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "Common.h"
 #include "InsertionSort.h"
 #include "MergeSort.h"
 #include "FindMaximumSubArray.h"
@@ -25,7 +26,10 @@ int main()
     //TestHeapSort();
     //TestPriorityQueue();
 
-    //TestQuickSort();
-    TestCountingSort();
+    TestQuickSort();
+    TestRandomizedQuickSort();
+    //TestCountingSort();
+    
+    
 }
 
