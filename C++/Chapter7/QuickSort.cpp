@@ -42,7 +42,7 @@ void RandomizedQuickSort(int* A, int start, int end)
 int RandomizedPartition(int* A, int start, int end)
 {
 	int i = Random(start, end);
-	Exchange(A, i, end);
+	Exchange(A, i, end - 1);
 	return Partition(A, start, end);
 }
 

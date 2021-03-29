@@ -29,6 +29,7 @@ add_package(Chapter4 ./Chapter4)
 add_package(Chapter6 ./Chapter6)
 add_package(Chapter7 ./Chapter7)
 add_package(Chapter8 ./Chapter8)
+add_package(Chapter9 ./Chapter9)
 
 add_definitions("-D_CRT_SECURE_NO_WARNINGS")
 

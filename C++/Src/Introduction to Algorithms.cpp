@@ -9,6 +9,7 @@
 #include "PriorityQueue.h"
 #include "QuickSort.h"
 #include "CountingSort.h"
+#include "RandomizedSelect.h"
 
 
 using namespace std;
@@ -26,10 +27,10 @@ int main()
     //TestHeapSort();
     //TestPriorityQueue();
 
-    TestQuickSort();
-    TestRandomizedQuickSort();
+    //TestQuickSort();
+    //TestRandomizedQuickSort();
     //TestCountingSort();
-    
+    TestRandomizedSelect();
     
 }
 
