@@ -10,6 +10,7 @@
 #include "QuickSort.h"
 #include "CountingSort.h"
 #include "RandomizedSelect.h"
+#include "BinarySearchTree.h"
 
 
 using namespace std;
@@ -30,7 +31,9 @@ int main()
     //TestQuickSort();
     //TestRandomizedQuickSort();
     //TestCountingSort();
-    TestRandomizedSelect();
+    //TestRandomizedSelect();
     
+    TestBinarySearchTree();
+
 }
 
