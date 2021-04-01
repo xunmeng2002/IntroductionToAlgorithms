@@ -5,7 +5,7 @@ using namespace std;
 
 void Node::Print()
 {
-	cout << "(" << Key << ":" << Value << ")  ";
+	cout << Key << "  ";
 }
 
 
@@ -219,7 +219,7 @@ void TestBinarySearchTree()
 	tree->TreeInsert(new Node(7, 1));
 	tree->TreeInsert(new Node(8, 1));
 
-	cout << endl << "PreorderTreeWalk:" << endl;
+	cout << "PreorderTreeWalk:" << endl;
 	tree->PreorderTreeWalk(tree->Root);
 	cout << endl << "InorderTreeWalk:" << endl;
 	tree->InorderTreeWalk(tree->Root);

@@ -3,13 +3,12 @@
 
 struct Node
 {
-	Node(int key, int value) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key), Value(value) { }
+	Node(int key, int value) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key) { }
 	Node* Parent;
 	Node* Left;
 	Node* Right;
 
 	int Key;
-	int Value;
 	void Print();
 };
 class BinarySearchTree
