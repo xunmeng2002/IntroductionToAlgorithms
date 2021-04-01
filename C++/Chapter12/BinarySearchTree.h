@@ -14,6 +14,9 @@ struct Node
 class BinarySearchTree
 {
 public:
+	BinarySearchTree();
+	~BinarySearchTree();
+	void Report();
 	void InorderTreeWalk(Node* x);
 	void PreorderTreeWalk(Node* x);
 	void PostorderTreeWalk(Node* x);
@@ -31,6 +34,7 @@ public:
 	void TreeDelete(Node* z);
 
 private:
+	void Release(Node* x);
 	void TreeTransplant(Node* u, Node* v);
 public:
 	Node* Root;

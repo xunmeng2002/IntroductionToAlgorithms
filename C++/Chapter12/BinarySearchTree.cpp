@@ -8,7 +8,30 @@ void Node::Print()
 	cout << Key << "  ";
 }
 
+BinarySearchTree::BinarySearchTree()
+	:Root(nullptr)
+{
 
+}
+BinarySearchTree::~BinarySearchTree()
+{
+	if (Root != nullptr)
+	{
+		Release(Root);
+	}
+	Root = nullptr;
+}
+
+void BinarySearchTree::Report()
+{
+	cout << "PreorderTreeWalk:" << endl;
+	PreorderTreeWalk(Root);
+	cout << endl << "InorderTreeWalk:" << endl;
+	InorderTreeWalk(Root);
+	cout << endl << "PostorderTreeWalk:" << endl;
+	PostorderTreeWalk(Root);
+	cout << endl;
+}
 void BinarySearchTree::InorderTreeWalk(Node* x)
 {
 	if (x != nullptr)
@@ -169,6 +192,15 @@ void BinarySearchTree::TreeDelete(Node* z)
 	}
 }
 
+void BinarySearchTree::Release(Node* x)
+{
+	if (x != nullptr)
+	{
+		Release(x->Left);
+		Release(x->Right);
+		delete x;
+	}
+}
 void BinarySearchTree::TreeTransplant(Node* u, Node* v)
 {
 	if (u->Parent == nullptr)
@@ -219,12 +251,7 @@ void TestBinarySearchTree()
 	tree->TreeInsert(new Node(7, 1));
 	tree->TreeInsert(new Node(8, 1));
 
-	cout << "PreorderTreeWalk:" << endl;
-	tree->PreorderTreeWalk(tree->Root);
-	cout << endl << "InorderTreeWalk:" << endl;
-	tree->InorderTreeWalk(tree->Root);
-	cout << endl << "PostorderTreeWalk:" << endl;
-	tree->PostorderTreeWalk(tree->Root);
+	tree->Report();
 
 	cout << endl << "TreeMinimum:" << endl;
 	PrintNode(tree->TreeMinimum(tree->Root));
@@ -244,10 +271,5 @@ void TestBinarySearchTree()
 	tree->Root->Print();
 	tree->TreeDelete(tree->Root);
 
-	cout << endl << "PreorderTreeWalk:" << endl;
-	tree->PreorderTreeWalk(tree->Root);
-	cout << endl << "InorderTreeWalk:" << endl;
-	tree->InorderTreeWalk(tree->Root);
-	cout << endl << "PostorderTreeWalk:" << endl;
-	tree->PostorderTreeWalk(tree->Root);
+	tree->Report();
 }
