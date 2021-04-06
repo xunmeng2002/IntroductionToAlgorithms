@@ -11,6 +11,7 @@
 #include "CountingSort.h"
 #include "RandomizedSelect.h"
 #include "BinarySearchTree.h"
+#include "RedBlackTree.h"
 
 
 using namespace std;
@@ -33,7 +34,7 @@ int main()
     //TestCountingSort();
     //TestRandomizedSelect();
     
-    TestBinarySearchTree();
-
+    //TestBinarySearchTree();
+    TestRedBlackTree();
 }
 
