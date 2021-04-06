@@ -1,12 +1,12 @@
 #pragma once
 
 
-struct Node
+struct BinarySearchTreeNode
 {
-	Node(int key) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key) { }
-	Node* Parent;
-	Node* Left;
-	Node* Right;
+	BinarySearchTreeNode(int key) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key) { }
+	BinarySearchTreeNode* Parent;
+	BinarySearchTreeNode* Left;
+	BinarySearchTreeNode* Right;
 
 	int Key;
 	void Print();
@@ -17,30 +17,30 @@ public:
 	BinarySearchTree();
 	~BinarySearchTree();
 	void Report();
-	void InorderTreeWalk(Node* x);
-	void PreorderTreeWalk(Node* x);
-	void PostorderTreeWalk(Node* x);
+	void InorderTreeWalk(BinarySearchTreeNode* x);
+	void PreorderTreeWalk(BinarySearchTreeNode* x);
+	void PostorderTreeWalk(BinarySearchTreeNode* x);
 
-	Node* Minimum(Node* x);
-	Node* Maximum(Node* x);
+	BinarySearchTreeNode* Minimum(BinarySearchTreeNode* x);
+	BinarySearchTreeNode* Maximum(BinarySearchTreeNode* x);
 
-	Node* Search(Node* x, int key);
-	Node* IterativeSearch(Node* x, int key);
+	BinarySearchTreeNode* Search(BinarySearchTreeNode* x, int key);
+	BinarySearchTreeNode* IterativeSearch(BinarySearchTreeNode* x, int key);
 
-	Node* Successor(Node* x);
-	Node* Predecessor(Node* x);
+	BinarySearchTreeNode* Successor(BinarySearchTreeNode* x);
+	BinarySearchTreeNode* Predecessor(BinarySearchTreeNode* x);
 
-	void Insert(Node* z);
-	void Delete(Node* z);
+	void Insert(BinarySearchTreeNode* z);
+	void Delete(BinarySearchTreeNode* z);
 
 private:
-	void Release(Node* x);
-	void Transplant(Node* u, Node* v);
+	void Release(BinarySearchTreeNode* x);
+	void Transplant(BinarySearchTreeNode* u, BinarySearchTreeNode* v);
 public:
-	Node* Root;
+	BinarySearchTreeNode* Root;
 };
 
 
 
-void PrintNode(Node* node);
+void PrintNode(BinarySearchTreeNode* node);
 void TestBinarySearchTree();

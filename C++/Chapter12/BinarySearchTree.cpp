@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void Node::Print()
+void BinarySearchTreeNode::Print()
 {
 	cout << Key << "  ";
 }
@@ -33,7 +33,7 @@ void BinarySearchTree::Report()
 	PostorderTreeWalk(Root);
 	cout << endl;
 }
-void BinarySearchTree::InorderTreeWalk(Node* x)
+void BinarySearchTree::InorderTreeWalk(BinarySearchTreeNode* x)
 {
 	if (x != nullptr)
 	{
@@ -42,7 +42,7 @@ void BinarySearchTree::InorderTreeWalk(Node* x)
 		InorderTreeWalk(x->Right);
 	}
 }
-void BinarySearchTree::PreorderTreeWalk(Node* x)
+void BinarySearchTree::PreorderTreeWalk(BinarySearchTreeNode* x)
 {
 	if (x != nullptr)
 	{
@@ -51,7 +51,7 @@ void BinarySearchTree::PreorderTreeWalk(Node* x)
 		PreorderTreeWalk(x->Right);
 	}
 }
-void BinarySearchTree::PostorderTreeWalk(Node* x)
+void BinarySearchTree::PostorderTreeWalk(BinarySearchTreeNode* x)
 {
 	if (x != nullptr)
 	{
@@ -61,7 +61,7 @@ void BinarySearchTree::PostorderTreeWalk(Node* x)
 	}
 }
 
-Node* BinarySearchTree::Minimum(Node* x)
+BinarySearchTreeNode* BinarySearchTree::Minimum(BinarySearchTreeNode* x)
 {
 	while (x->Left != nullptr)
 	{
@@ -69,7 +69,7 @@ Node* BinarySearchTree::Minimum(Node* x)
 	}
 	return x;
 }
-Node* BinarySearchTree::Maximum(Node* x)
+BinarySearchTreeNode* BinarySearchTree::Maximum(BinarySearchTreeNode* x)
 {
 	while (x->Right != nullptr)
 	{
@@ -78,7 +78,7 @@ Node* BinarySearchTree::Maximum(Node* x)
 	return x;
 }
 
-Node* BinarySearchTree::Search(Node* x, int key)
+BinarySearchTreeNode* BinarySearchTree::Search(BinarySearchTreeNode* x, int key)
 {
 	if (x == nullptr || key == x->Key)
 	{
@@ -93,7 +93,7 @@ Node* BinarySearchTree::Search(Node* x, int key)
 		return Search(x->Right, key);
 	}
 }
-Node* BinarySearchTree::IterativeSearch(Node* x, int key)
+BinarySearchTreeNode* BinarySearchTree::IterativeSearch(BinarySearchTreeNode* x, int key)
 {
 	while (x != nullptr && key != x->Key)
 	{
@@ -109,7 +109,7 @@ Node* BinarySearchTree::IterativeSearch(Node* x, int key)
 	return x;
 }
 
-Node* BinarySearchTree::Successor(Node* x)
+BinarySearchTreeNode* BinarySearchTree::Successor(BinarySearchTreeNode* x)
 {
 	if (x->Right != nullptr)
 	{
@@ -123,7 +123,7 @@ Node* BinarySearchTree::Successor(Node* x)
 	}
 	return y;
 }
-Node* BinarySearchTree::Predecessor(Node* x)
+BinarySearchTreeNode* BinarySearchTree::Predecessor(BinarySearchTreeNode* x)
 {
 	if (x->Left != nullptr)
 	{
@@ -138,10 +138,10 @@ Node* BinarySearchTree::Predecessor(Node* x)
 	return y;
 }
 
-void BinarySearchTree::Insert(Node* z)
+void BinarySearchTree::Insert(BinarySearchTreeNode* z)
 {
-	Node* x = Root;
-	Node* y = nullptr;
+	BinarySearchTreeNode* x = Root;
+	BinarySearchTreeNode* y = nullptr;
 	while (x != nullptr)
 	{
 		y = x;
@@ -168,7 +168,7 @@ void BinarySearchTree::Insert(Node* z)
 		y->Right = z;
 	}
 }
-void BinarySearchTree::Delete(Node* z)
+void BinarySearchTree::Delete(BinarySearchTreeNode* z)
 {
 	if (z->Left == nullptr)
 	{
@@ -180,7 +180,7 @@ void BinarySearchTree::Delete(Node* z)
 	}
 	else
 	{
-		Node* y = Minimum(z->Right);
+		BinarySearchTreeNode* y = Minimum(z->Right);
 		if (y->Parent != z)
 		{
 			Transplant(y, y->Right);
@@ -193,7 +193,7 @@ void BinarySearchTree::Delete(Node* z)
 	}
 }
 
-void BinarySearchTree::Release(Node* x)
+void BinarySearchTree::Release(BinarySearchTreeNode* x)
 {
 	if (x != nullptr)
 	{
@@ -202,7 +202,7 @@ void BinarySearchTree::Release(Node* x)
 		delete x;
 	}
 }
-void BinarySearchTree::Transplant(Node* u, Node* v)
+void BinarySearchTree::Transplant(BinarySearchTreeNode* u, BinarySearchTreeNode* v)
 {
 	if (u->Parent == nullptr)
 	{
@@ -223,7 +223,7 @@ void BinarySearchTree::Transplant(Node* u, Node* v)
 }
 
 
-void PrintNode(Node* node)
+void PrintNode(BinarySearchTreeNode* node)
 {
 	if (node)
 	{
@@ -231,19 +231,19 @@ void PrintNode(Node* node)
 	}
 	else
 	{
-		cout << "Empty Node." << endl;
+		cout << "Empty BinarySearchTreeNode." << endl;
 	}
 }
 void TestBinarySearchTree()
 {
-	vector<Node*> nodes;
-	nodes.push_back(new Node(4));
-	nodes.push_back(new Node(5));
-	nodes.push_back(new Node(7));
-	nodes.push_back(new Node(6));
-	nodes.push_back(new Node(3));
-	nodes.push_back(new Node(1));
-	nodes.push_back(new Node(2));
+	vector<BinarySearchTreeNode*> nodes;
+	nodes.push_back(new BinarySearchTreeNode(4));
+	nodes.push_back(new BinarySearchTreeNode(5));
+	nodes.push_back(new BinarySearchTreeNode(7));
+	nodes.push_back(new BinarySearchTreeNode(6));
+	nodes.push_back(new BinarySearchTreeNode(3));
+	nodes.push_back(new BinarySearchTreeNode(1));
+	nodes.push_back(new BinarySearchTreeNode(2));
 	
 
 	BinarySearchTree* tree = new BinarySearchTree();
