@@ -30,8 +30,8 @@ public:
 	void PreorderTreeWalk(RedBlackTreeNode* x);
 	void PostorderTreeWalk(RedBlackTreeNode* x);
 
-	RedBlackTreeNode* TreeMinimum(RedBlackTreeNode* x);
-	RedBlackTreeNode* TreeMaximum(RedBlackTreeNode* x);
+	RedBlackTreeNode* Minimum(RedBlackTreeNode* x);
+	RedBlackTreeNode* Maximum(RedBlackTreeNode* x);
 
 	void Insert(RedBlackTreeNode* z);
 	void Delete(RedBlackTreeNode* z);

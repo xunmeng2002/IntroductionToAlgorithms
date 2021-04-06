@@ -80,7 +80,7 @@ void RedBlackTree::PostorderTreeWalk(RedBlackTreeNode* x)
 	}
 }
 
-RedBlackTreeNode* RedBlackTree::TreeMinimum(RedBlackTreeNode* x)
+RedBlackTreeNode* RedBlackTree::Minimum(RedBlackTreeNode* x)
 {
 	while (x->Left != nullptr)
 	{
@@ -88,7 +88,7 @@ RedBlackTreeNode* RedBlackTree::TreeMinimum(RedBlackTreeNode* x)
 	}
 	return x;
 }
-RedBlackTreeNode* RedBlackTree::TreeMaximum(RedBlackTreeNode* x)
+RedBlackTreeNode* RedBlackTree::Maximum(RedBlackTreeNode* x)
 {
 	while (x->Right != nullptr)
 	{
@@ -148,7 +148,7 @@ void RedBlackTree::Delete(RedBlackTreeNode* z)
 	}
 	else
 	{
-		y = TreeMinimum(z->Right);
+		y = Minimum(z->Right);
 		y_original_color = y->Color;
 		x = y->Right;
 		if (y->Parent != z)

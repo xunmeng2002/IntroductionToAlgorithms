@@ -3,7 +3,7 @@
 
 struct Node
 {
-	Node(int key, int value) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key) { }
+	Node(int key) :Parent(nullptr), Left(nullptr), Right(nullptr), Key(key) { }
 	Node* Parent;
 	Node* Left;
 	Node* Right;
@@ -21,21 +21,21 @@ public:
 	void PreorderTreeWalk(Node* x);
 	void PostorderTreeWalk(Node* x);
 
-	Node* TreeMinimum(Node* x);
-	Node* TreeMaximum(Node* x);
+	Node* Minimum(Node* x);
+	Node* Maximum(Node* x);
 
-	Node* TreeSearch(Node* x, int key);
-	Node* IterativeTreeSearch(Node* x, int key);
+	Node* Search(Node* x, int key);
+	Node* IterativeSearch(Node* x, int key);
 
-	Node* TreeSuccessor(Node* x);
-	Node* TreePredecessor(Node* x);
+	Node* Successor(Node* x);
+	Node* Predecessor(Node* x);
 
-	void TreeInsert(Node* z);
-	void TreeDelete(Node* z);
+	void Insert(Node* z);
+	void Delete(Node* z);
 
 private:
 	void Release(Node* x);
-	void TreeTransplant(Node* u, Node* v);
+	void Transplant(Node* u, Node* v);
 public:
 	Node* Root;
 };

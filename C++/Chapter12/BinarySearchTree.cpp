@@ -1,5 +1,6 @@
 #include "BinarySearchTree.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -24,11 +25,11 @@ BinarySearchTree::~BinarySearchTree()
 
 void BinarySearchTree::Report()
 {
-	cout << "PreorderTreeWalk:" << endl;
+	cout << "PreorderTreeWalk:\t";
 	PreorderTreeWalk(Root);
-	cout << endl << "InorderTreeWalk:" << endl;
+	cout << endl << "InorderTreeWalk:\t";
 	InorderTreeWalk(Root);
-	cout << endl << "PostorderTreeWalk:" << endl;
+	cout << endl << "PostorderTreeWalk:\t";
 	PostorderTreeWalk(Root);
 	cout << endl;
 }
@@ -60,7 +61,7 @@ void BinarySearchTree::PostorderTreeWalk(Node* x)
 	}
 }
 
-Node* BinarySearchTree::TreeMinimum(Node* x)
+Node* BinarySearchTree::Minimum(Node* x)
 {
 	while (x->Left != nullptr)
 	{
@@ -68,7 +69,7 @@ Node* BinarySearchTree::TreeMinimum(Node* x)
 	}
 	return x;
 }
-Node* BinarySearchTree::TreeMaximum(Node* x)
+Node* BinarySearchTree::Maximum(Node* x)
 {
 	while (x->Right != nullptr)
 	{
@@ -77,7 +78,7 @@ Node* BinarySearchTree::TreeMaximum(Node* x)
 	return x;
 }
 
-Node* BinarySearchTree::TreeSearch(Node* x, int key)
+Node* BinarySearchTree::Search(Node* x, int key)
 {
 	if (x == nullptr || key == x->Key)
 	{
@@ -85,14 +86,14 @@ Node* BinarySearchTree::TreeSearch(Node* x, int key)
 	}
 	if (key < x->Key)
 	{
-		return TreeSearch(x->Left, key);
+		return Search(x->Left, key);
 	}
 	else
 	{
-		return TreeSearch(x->Right, key);
+		return Search(x->Right, key);
 	}
 }
-Node* BinarySearchTree::IterativeTreeSearch(Node* x, int key)
+Node* BinarySearchTree::IterativeSearch(Node* x, int key)
 {
 	while (x != nullptr && key != x->Key)
 	{
@@ -108,11 +109,11 @@ Node* BinarySearchTree::IterativeTreeSearch(Node* x, int key)
 	return x;
 }
 
-Node* BinarySearchTree::TreeSuccessor(Node* x)
+Node* BinarySearchTree::Successor(Node* x)
 {
 	if (x->Right != nullptr)
 	{
-		return TreeMinimum(x->Right);
+		return Minimum(x->Right);
 	}
 	auto y = x->Parent;
 	while (y != nullptr && x == y->Right)
@@ -122,11 +123,11 @@ Node* BinarySearchTree::TreeSuccessor(Node* x)
 	}
 	return y;
 }
-Node* BinarySearchTree::TreePredecessor(Node* x)
+Node* BinarySearchTree::Predecessor(Node* x)
 {
 	if (x->Left != nullptr)
 	{
-		return TreeMaximum(x->Left);
+		return Maximum(x->Left);
 	}
 	auto y = x->Parent;
 	while (y != nullptr && x == y->Left)
@@ -137,7 +138,7 @@ Node* BinarySearchTree::TreePredecessor(Node* x)
 	return y;
 }
 
-void BinarySearchTree::TreeInsert(Node* z)
+void BinarySearchTree::Insert(Node* z)
 {
 	Node* x = Root;
 	Node* y = nullptr;
@@ -167,26 +168,26 @@ void BinarySearchTree::TreeInsert(Node* z)
 		y->Right = z;
 	}
 }
-void BinarySearchTree::TreeDelete(Node* z)
+void BinarySearchTree::Delete(Node* z)
 {
 	if (z->Left == nullptr)
 	{
-		TreeTransplant(z, z->Right);
+		Transplant(z, z->Right);
 	}
 	else if (z->Right == nullptr)
 	{
-		TreeTransplant(z, z->Left);
+		Transplant(z, z->Left);
 	}
 	else
 	{
-		Node* y = TreeMinimum(z->Right);
+		Node* y = Minimum(z->Right);
 		if (y->Parent != z)
 		{
-			TreeTransplant(y, y->Right);
+			Transplant(y, y->Right);
 			y->Right = z->Right;
 			y->Right->Parent = y;
 		}
-		TreeTransplant(z, y);
+		Transplant(z, y);
 		y->Left = z->Left;
 		y->Left->Parent = y;
 	}
@@ -201,7 +202,7 @@ void BinarySearchTree::Release(Node* x)
 		delete x;
 	}
 }
-void BinarySearchTree::TreeTransplant(Node* u, Node* v)
+void BinarySearchTree::Transplant(Node* u, Node* v)
 {
 	if (u->Parent == nullptr)
 	{
@@ -235,41 +236,41 @@ void PrintNode(Node* node)
 }
 void TestBinarySearchTree()
 {
+	vector<Node*> nodes;
+	nodes.push_back(new Node(4));
+	nodes.push_back(new Node(5));
+	nodes.push_back(new Node(7));
+	nodes.push_back(new Node(6));
+	nodes.push_back(new Node(3));
+	nodes.push_back(new Node(1));
+	nodes.push_back(new Node(2));
+	
+
 	BinarySearchTree* tree = new BinarySearchTree();
-	tree->Root = new Node(5, 0);
+	for (auto node : nodes)
+	{
+		tree->Insert(node);
+		tree->Report();
+	}
+	cout << endl << "Root:\t";
+	PrintNode(tree->Root);
+	cout << endl << "Minimum:\t";
+	PrintNode(tree->Minimum(tree->Root));
+	cout << endl << "Maximum:\t";
+	PrintNode(tree->Maximum(tree->Root));
 
-	tree->TreeInsert(new Node(3, 0));
-	tree->TreeInsert(new Node(4, 0));
-	tree->TreeInsert(new Node(5, 1));
-	tree->TreeInsert(new Node(6, 0));
-	tree->TreeInsert(new Node(7, 0));
-	tree->TreeInsert(new Node(8, 0));
-	tree->TreeInsert(new Node(3, 1));
-	tree->TreeInsert(new Node(4, 1));
-	tree->TreeInsert(new Node(5, 2));
-	tree->TreeInsert(new Node(6, 1));
-	tree->TreeInsert(new Node(7, 1));
-	tree->TreeInsert(new Node(8, 1));
+	cout << endl << "Search:\t";
+	PrintNode(tree->Search(tree->Root, 6));
 
-	tree->Report();
-
-	cout << endl << "TreeMinimum:" << endl;
-	PrintNode(tree->TreeMinimum(tree->Root));
-	cout << endl << "TreeMaximum:" << endl;
-	PrintNode(tree->TreeMaximum(tree->Root));
-
-	cout << endl << "TreeSearch:" << endl;
-	PrintNode(tree->TreeSearch(tree->Root, 6));
-
-	cout << endl << "TreeSuccessor:" << endl;
-	PrintNode(tree->TreeSuccessor(tree->Root->Right));
+	cout << endl << "Successor:\t";
+	PrintNode(tree->Successor(tree->Root));
+	cout << endl << "Predecessor:\t";
+	PrintNode(tree->Predecessor(tree->Root));
 	
-	cout << endl << "TreePredecessor:" << endl;
-	PrintNode(tree->TreePredecessor(tree->Root->Right));
-	
-	cout << endl << "TreeDelete:" << endl;
-	tree->Root->Print();
-	tree->TreeDelete(tree->Root);
-
-	tree->Report();
+	cout << endl << endl;
+	for (auto node : nodes)
+	{
+		tree->Report();
+		tree->Delete(node);
+	}
 }

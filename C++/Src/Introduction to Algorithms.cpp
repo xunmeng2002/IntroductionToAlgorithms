@@ -34,7 +34,7 @@ int main()
     //TestCountingSort();
     //TestRandomizedSelect();
     
-    //TestBinarySearchTree();
-    TestRedBlackTree();
+    TestBinarySearchTree();
+    //TestRedBlackTree();
 }
 
